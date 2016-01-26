@@ -1,0 +1,7 @@
+<launch>
+	<include file="$(find coros_communication)/launch/local_ip_address_bringup.launch"/>
+	<include file="$(find discovery_app_2)/launch/dispatcher_app.launch"/>
+	<include file="$(find discovery_app_2)/launch/coros_message_to_json_converters.launch"/>
+	<include file="$(find discovery_app_2)/launch/coros_message_from_json_converters.launch"/>
+	<include file="$(find discovery_app_2)/launch/discovery_app.launch"/>
+</launch>

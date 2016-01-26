@@ -1,0 +1,16 @@
+<launch>
+   
+  <arg name="operator_node_name" default="mybot_call_operator_app_node"/>
+  <arg name="package_name"       default="mybot_call_app"/>
+  
+  
+  <arg name="agent_id"        default="1"/>
+
+
+ 
+  <!-- Operator Node -->
+  <node name="$(arg operator_node_name)$(arg agent_id)" pkg="$(arg package_name)" type="$(arg operator_node_name)" args="$(arg operator_node_name)$(arg agent_id) $(arg agent_id)"  output="screen">
+  </node>
+  
+
+</launch>

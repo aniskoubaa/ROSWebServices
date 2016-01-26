@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<package>
+  <name>delivery_app</name>
+  <version>0.0.0</version>
+  <description>The delivery_app package</description>
+  <maintainer email="sritia@gmail.com">foued</maintainer>
+  <license>TODO</license>
+  <author email="sritia@gmail.com">foued</author> 
+
+
+  <!-- The *_depend tags are used to specify dependencies -->
+  <!-- Dependencies can be catkin packages or system dependencies -->
+  <!-- Examples: -->
+  <!-- Use build_depend for packages you need at compile time: -->
+  <!--   <build_depend>message_generation</build_depend> -->
+  <!-- Use buildtool_depend for build tool packages: -->
+  <!--   <buildtool_depend>catkin</buildtool_depend> -->
+  <!-- Use run_depend for packages you need at runtime: -->
+  <!--   <run_depend>message_runtime</run_depend> -->
+  <!-- Use test_depend for packages you need only for testing: -->
+  <!--   <test_depend>gtest</test_depend> -->
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>coros_actions</build_depend>
+  <build_depend>coros_common</build_depend>
+  <build_depend>coros_communication</build_depend>
+  <build_depend>coros_kb</build_depend>
+  <build_depend>coros_messages</build_depend>
+  <build_depend>coros_node</build_depend>
+  <build_depend>coros_operator</build_depend>
+  <build_depend>coros_processing</build_depend>
+  <build_depend>coros_tasks</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+
+  <run_depend>message_runtime</run_depend>
+  <run_depend>coros_actions</run_depend>
+  <run_depend>coros_common</run_depend>
+  <run_depend>coros_communication</run_depend>
+  <run_depend>coros_kb</run_depend>
+  <run_depend>coros_messages</run_depend>
+  <run_depend>coros_node</run_depend>
+  <run_depend>coros_operator</run_depend>
+  <run_depend>coros_processing</run_depend>
+  <run_depend>coros_tasks</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+
+</package>

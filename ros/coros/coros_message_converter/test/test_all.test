@@ -1,0 +1,3 @@
+<launch>
+    <test test-name="test_coros_message_converter" pkg="coros_message_converter" type="test_coros_message_converter.py" />
+</launch>

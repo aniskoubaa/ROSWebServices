@@ -1,0 +1,16 @@
+<launch>
+    <!--
+
+    This launch file is used to start Asus Live Pro 3D Sensor Camera.
+
+    Command to launch:
+    roslaunch mybot_bringup asus_bringup.launch
+
+    -->
+<!--
+    Asus Live Pro 3D Sensor Camera
+ -->
+
+<include file="$(find openni_launch)/launch/openni.launch"/> 
+
+ </launch>

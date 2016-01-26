@@ -1,0 +1,9 @@
+<launch>
+	<include file="$(find rbx1_bringup)/launch/fake_turtlebot.launch"/>
+
+	<include file="$(find rbx1_nav)/launch/fake_amcl.launch">
+		<arg name="map" value="ccis_psu_partial.yaml" />
+        </include>
+
+	<node name="fake_turtlebot_visualisation" pkg="rviz" type="rviz" output="screen" args="-d /home/ros/catkin_ws/src/rbx1/rbx1_nav/nav.rviz" />
+</launch>

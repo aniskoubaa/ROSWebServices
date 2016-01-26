@@ -1,0 +1,6 @@
+<launch>
+	<include file="$(find mybot_delivery_app)/launch/mybot_delivery_message_to_json_converters.launch"/>
+	<include file="$(find mybot_delivery_app)/launch/mybot_delivery_message_from_json_converters.launch"/>
+	<include file="$(find mybot_delivery_app)/launch/dispatcher_app.launch"/>
+	<include file="$(find mybot_delivery_app)/launch/mybot_delivery_app.launch"/>
+</launch>

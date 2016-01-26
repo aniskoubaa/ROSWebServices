@@ -1,0 +1,58 @@
+<launch>
+
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++-->
+ <!-- OPTION 1: ENABLE SCAN TOPIC OF ASUS CAMERA -->
+ <!--++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<include file="$(find turtlebot_bringup)/launch/3dsensor.launch">
+    <arg name="rgb_processing" value="false" />
+    <arg name="depth_registration" value="false" />
+    <arg name="depth_processing" value="false" />
+    <!-- We must specify an absolute topic name because if not it will be prefixed by "$(arg camera)".
+         Probably is a bug in the nodelet manager: https://github.com/ros/nodelet_core/issues/7 -->
+	   <arg name="scan_topic" value="/scan"/> 
+ </include>
+
+  <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  <!-- OPTION 2: JUST RUN OPENNI DRIVER WITHOU DEPTH TO SCAN -->
+  <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  <!-- start the asus live pro 3d sensor (NOT NEEDED AS LANUCHED IN AMCL)-->
+  <!--include file="$(find mybot_bringup)/launch/asus_live_pro/asus_bringup.launch"/-->
+
+  <!-- NAVIGATION FUNCTIONS -->
+
+
+   <!-- start gmapping and move_based -->
+  <!--include file="$(find turtlebot_navigation)/launch/includes/gmapping.launch.xml"/-->
+  <!--include file="$(find mybot_bringup)/launch/mybot_navigation/includes/move_base.launch.xml"/-->
+
+    
+  <!-- Map server -->
+  <arg name="map_file" default="$(find mybot_bringup)/maps/default_map/default.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <arg name="initial_pose_x" default="75.898"/> <!-- Use 75.898 for ccis-psu map in simulation -->
+  <arg name="initial_pose_y" default="43.408"/> <!-- Use 40.408 for ccis-psu map in simulation -->
+  <arg name="initial_pose_a" default="0.0"/>
+
+   <include file="$(find turtlebot_bringup)/launch/mybot_navigation/includes/amcl.launch.xml">
+    <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
+    <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
+    <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
+  </include>
+
+
+<!--
+      [Anis] May 3, 2015
+      IMPORTANT NOTE: it is important to have the topic /scan working for move_base to be operate correctly
+      otherwise, it will generate a tf error between odom and map frame.
+      the scan_topic of the 3dsensor above was set to /asus_scan as it is assumed that the /scan topic will
+      be produced by the Hokuyo node. If Hokuyo node is not started, make sure to re-set the /asus_scan topic to /scan
+       topic if you want to launch move_base.
+ -->
+  
+  <include file="$(find turtlebot_bringup)/launch/mybot_navigation/includes/move_base.launch.xml"/>
+  
+
+</launch>
+
+

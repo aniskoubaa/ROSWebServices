@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <name>coros_processing</name>
+  <version>0.0.1</version>
+  <description>The coros_processing package</description>
+  <maintainer email="sritia@gmail.com">M.-F. Sriti</maintainer>
+  <license>TODO</license>
+  <author email="sritia@gmail.com">M.-F. Sriti</author>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>coros_actions</build_depend>
+  <build_depend>coros_messages</build_depend>
+  <build_depend>coros_tasks</build_depend>
+  <build_depend>roscpp</build_depend>
+  <run_depend>coros_actions</run_depend>
+  <run_depend>coros_messages</run_depend>
+  <run_depend>coros_tasks</run_depend>
+  <run_depend>roscpp</run_depend>
+</package>

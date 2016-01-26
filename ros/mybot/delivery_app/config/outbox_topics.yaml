@@ -1,0 +1,4 @@
+- DeliveryRequestMsg/out_box
+- DeliveryStatusMsg/out_box
+- DeliveryResultMsg/out_box
+

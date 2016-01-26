@@ -1,0 +1,9 @@
+CorosHeader header
+int32 message_code
+int32 id
+string name
+string ip
+int32 port
+float64 timestamp
+string role
+string status

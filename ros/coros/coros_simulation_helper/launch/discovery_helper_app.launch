@@ -1,0 +1,15 @@
+<launch>
+  
+  <arg name="server_node_name"   default="discovery_helper_server_app_node"/>
+  <arg name="operator_node_name" default="discovery_helper_operator_app_node"/>
+  <arg name="port_number"     default="25000"/> 
+
+  <!-- Server Node -->
+  <node name="$(arg server_node_name)" pkg="coros_simulation_helper" type="discovery_helper_server_app_node" args="$(arg server_node_name) $(arg port_number)" output="screen">
+  </node>
+  
+  <!-- Operator Node -->
+  <node name="$(arg operator_node_name)" pkg="coros_simulation_helper" type="discovery_helper_operator_app_node" args="$(arg operator_node_name)"  output="screen">
+  </node>
+  
+</launch>

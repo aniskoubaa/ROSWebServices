@@ -1,0 +1,32 @@
+<launch>
+  <!-- 
+  
+  This launch file can be reused for several agents by sending the right arguments.
+  
+  Example for control station agent:
+  
+  - coros@coros-dev-pc:~$ roslaunch discovery_app discovery_app_agent.launch agent_id:=1 agent_role:=control ip_address:=192.168.100.4
+  
+  Example for robot agent:
+  
+  - coros@coros-dev-pc:~$ roslaunch discovery_app discovery_app_agent.launch agent_id:=2 agent_role:=robot ip_address:=192.168.100.5
+  
+  -->
+  
+  <arg name="node_name" 	 default="ip_address_publisher"/>
+  <arg name="package_name"       default="coros_communication"/>
+  <arg name="agent_id"           default="1"/>
+  <arg name="message_rate"       default="0.2"/> <!-- 1 message in 5 seconds -->	
+  
+  <!-- IP Address Publisher Node -->
+  <!--node name="agent_$(arg agent_id)_$(arg node_name)" pkg="$(arg package_name)" type="$(arg node_name).py" args="$(arg node_name)$(arg agent_id)"  output="screen"-->
+  <node name="agent_$(arg agent_id)_$(arg node_name)" pkg="$(arg package_name)" type="$(arg node_name).py" args="$(arg node_name)$(arg agent_id)">
+    <param name="message_rate"        value="$(arg message_rate)"/>
+  </node>  
+  
+  <arg name="service_node_name" 	 default="ip_address_service"/>
+  <!-- IP Address Service Node -->
+  <node name="agent_$(arg agent_id)_$(arg service_node_name)" pkg="$(arg package_name)" type="$(arg service_node_name).py" args="$(arg service_node_name)$(arg agent_id)"  output="screen">
+  </node> 
+  
+</launch>

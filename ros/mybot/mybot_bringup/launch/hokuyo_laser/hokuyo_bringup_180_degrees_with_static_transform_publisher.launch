@@ -1,0 +1,55 @@
+<launch>
+
+ <!--
+
+  This launch file is used to start the Hokuyo laser node with an opening of 180 degrees.
+  It also starts a static transform publisher between the laser frame and the base_footprint of the turtlebot
+  This static transform publisher is needed by gmapping for establishing a transform between odom and laser frames. 
+
+  Command to launch:
+  roslaunch mybot_bringup hokuyo_bringup_180.launch
+
+  -->
+  <!--
+    This is the list of arguments for the static transform.
+    Replace with the correct values for your robot if needed.
+ -->
+  <arg name="x"      		default="0.10"/>
+  <arg name="y"      		default="0.00"/>
+  <arg name="z"     		default="0.30"/>
+  <arg name="roll"     		default="0.0"/>
+  <arg name="pitch"    		default="0.0"/>
+  <arg name="yaw"      		default="0.0"/>
+  <arg name="robot_frame"      default="/base_footprint"/>
+  <arg name="laser_frame"      default="/laser"/>
+
+  -->
+  <!--
+    The static transform publisher node
+ -->
+  
+  <node pkg="tf"
+                  type="static_transform_publisher"
+                  name="base_footprint_to_base_laser_link"
+                  args="$(arg x), $(arg y), $(arg z) $(arg roll) $(arg pitch) $(arg yaw) $(arg robot_frame)  $(arg laser_frame) 100" />
+
+<!--
+    The hokuyo node with 180 degree (1.57 radians)
+ -->
+
+  <arg name="port"      	default="/dev/ttyACM0"/>
+  <arg name="min_ang"      	default="-1.57"/>
+  <arg name="max_ang"     	default="1.57"/>
+
+
+     <node name="hokuyo" pkg="hokuyo_node" type="hokuyo_node" respawn="false" output="screen">
+       <param name="calibrate_time" type="bool" value="true"/>
+       <param name="port" type="string" value="$(arg port)"/>
+       <param name="intensity" type="bool" value="false"/>
+       <param name="min_ang" value="$(arg min_ang)"/>
+       <param name="max_ang" value="$(arg max_ang)"/>
+       <param name="cluster" value="1"/>
+     </node>
+
+</launch>
+

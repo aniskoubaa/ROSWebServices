@@ -1,0 +1,42 @@
+<launch>
+  <!-- 
+  
+  This launch file can be reused for several agents by sending the right arguments.
+  
+  Example for control station agent:
+  
+  - coros@coros-dev-pc:~$ roslaunch discovery_app_2 dispatcher_app.launch agent_id:=1 outbox_topics_file:=src/discovery_app_2/config/outbox_topics.yaml inbox_topics_file:=src/discovery_app_2/config/inbox_topics.yaml
+  
+  -->
+  
+  <arg name="receiver_node_name" default="dispatcher_receiver_app_node"/>
+  <arg name="sender_node_name"   default="dispatcher_sender_app_node"/>
+  <arg name="package_name"       default="dispatcher_app"/>
+  
+  
+  <arg name="running_mode"    default="1"/>  <!--  0=simulation or 1=experimental -->
+  
+  <arg name="agent_id"        default="1"/>
+  <arg name="port_number"     default="1300"/> 
+  <arg name="ip_address"      default="192.168.100.3"/> 
+
+  <!-- inbox/outbox_topics_file parameters should be specified -->
+  <arg name="outbox_topics_file" default="outbox_topics.yaml"/>
+  <arg name="inbox_topics_file" default="inbox_topics.yaml"/>
+
+  <!-- Receiver Node -->
+  <node name="$(arg receiver_node_name)$(arg agent_id)" pkg="$(arg package_name)" type="$(arg receiver_node_name)" args="$(arg receiver_node_name)$(arg agent_id) $(arg running_mode) $(arg agent_id) $(arg port_number)" output="screen">
+    <param name="agent_id" value="$(arg agent_id)"/>
+    <param name="port_number" value="$(arg port_number)"/>
+    <rosparam param="inbox_topics_list" command="load" file="$(find delivery_app)/config/$(arg inbox_topics_file)"/>
+  </node> 
+  
+  <!-- Sender Node -->
+  <node name="$(arg sender_node_name)$(arg agent_id)" pkg="$(arg package_name)" type="$(arg sender_node_name)" args="$(arg sender_node_name)$(arg agent_id) $(arg running_mode) $(arg agent_id)"  output="screen">
+    <param name="agent_id"        value="$(arg agent_id)"/>
+    <param name="ip_address"      value="$(arg ip_address)"/>
+    <param name="port_number"     value="$(arg port_number)"/>
+    <rosparam param="outbox_topics_list" command="load" file="$(find delivery_app)/config/$(arg outbox_topics_file)"/>
+  </node>
+  
+</launch>

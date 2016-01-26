@@ -1,0 +1,3 @@
+CorosHeader header
+string message_type
+string message_content

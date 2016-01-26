@@ -1,0 +1,21 @@
+<launch>
+  
+  <!--
+
+  This launch file is used to start the arbotix pincherX amr without moveit!
+  it must be launched before moveit!.
+
+  Command to launch:
+  roslaunch mybot_bringup arbotix_arm_bringup.launch
+
+  -->
+  
+
+  
+  <node name="arbotix" pkg="arbotix_python" type="arbotix_driver" output="screen">
+    <rosparam file="$(find turtlebot_arm_bringup)/config/arm.yaml" command="load" />
+    <param name="port" value="/dev/arbotix_arm"/>
+  </node>
+
+
+</launch>

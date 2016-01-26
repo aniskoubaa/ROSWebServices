@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <name>coros_common</name>
+  <version>0.0.1</version>
+  <description>The coros_common package</description>
+  <maintainer email="coros@todo.todo">coros</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <run_depend>roscpp</run_depend>
+</package>

@@ -1,0 +1,3 @@
+<launch>
+   <node name="telosb_node" pkg="telosb" type="telosb_node" output="screen"/>    
+</launch>

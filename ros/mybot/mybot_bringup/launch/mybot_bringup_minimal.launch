@@ -1,0 +1,31 @@
+<launch>
+
+  <!-- start the turtlebot with kobuki based -->
+  <include file="$(find mybot_bringup)/launch/turtlebot_kobuki/turtlebot_kobuki.launch"/>
+
+ <!-- start the Hokuyo laser range finder -->
+  <include file="$(find mybot_bringup)/launch/hokuyo_laser/hokuyo_bringup_180_degrees_with_static_transform_publisher.launch"/>
+
+  <!-- start soundplay module -->
+   <include file="$(find mybot_bringup)/launch/sound_play/sound_play.launch"/>
+ 
+  <!-- start the navigation stack: move_base + amcl -->
+  <!-- navigation parameters must be carefully tuned for each robot and map -->
+   <include file="$(find mybot_bringup)/launch/mybot_navigation/amcl_mybot.launch"/>
+
+    <!-- start the arbotix_arm -->
+   <include file="$(find mybot_bringup)/launch/arbotix_arm/arbotix_arm_bringup.launch"/>
+   <include file="$(find arm_controller)/launch/arm.launch"/> <!-- by Yasir -->
+
+    <!-- start the discovery protocol
+      it includes "$(find coros_communication)/launch/local_ip_address_bringup.launch"
+      that published a topic and service of the local IP address used in discovery protocol
+   -->
+   <include file="$(find discovery_app_2)/launch/launch_all.launch"/>
+
+     <!--start the applications-->
+  <include file="$(find mybot_call_app)/launch/launch_all.launch"/>
+  <include file="$(find mybot_delivery_app)/launch/launch_all.launch"/>
+  
+
+</launch>

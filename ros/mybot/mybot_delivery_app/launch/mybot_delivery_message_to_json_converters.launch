@@ -1,0 +1,11 @@
+<launch>
+
+  <node
+    pkg  = "coros_message_converter"
+    type = "coros_msg_to_json.py"
+    name = "coros_msg_to_json"
+    ns   = "DeliveryRequestMsg" 
+    args = "'mybot_delivery_app' 'DeliveryRequestMsg'" output="screen">
+  </node>
+
+</launch>

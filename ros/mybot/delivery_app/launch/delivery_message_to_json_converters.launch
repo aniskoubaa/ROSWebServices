@@ -1,0 +1,34 @@
+<launch>
+  <!-- 
+  
+  This launch file can be reused for several coros messages to json format convertors by sending the right arguments.
+
+  -->
+  
+  <!-- by convention ns equals to message type -->
+ 
+
+  <node
+    pkg  = "coros_message_converter"
+    type = "coros_msg_to_json.py"
+    name = "coros_msg_to_json"
+    ns   = "DeliveryRequestMsg" 
+    args = "'delivery_app' 'DeliveryRequestMsg'" output="screen">
+  </node>
+
+  <node
+    pkg  = "coros_message_converter"
+    type = "coros_msg_to_json.py"
+    name = "coros_msg_to_json"
+    ns   = "DeliveryStatusMsg" 
+    args = "'delivery_app' 'DeliveryStatusMsg'" output="screen">
+  </node>
+
+  <node
+    pkg  = "coros_message_converter"
+    type = "coros_msg_to_json.py"
+    name = "coros_msg_to_json"
+    ns   = "DeliveryResultMsg" 
+    args = "'delivery_app' 'DeliveryResultMsg'" output="screen">
+  </node>
+</launch>

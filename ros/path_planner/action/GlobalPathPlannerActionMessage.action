@@ -1,0 +1,9 @@
+#goal definition
+geometry_msgs/PoseStamped start
+geometry_msgs/PoseStamped target
+---
+#result definition
+geometry_msgs/PoseStamped[] plan
+---
+#feedback
+geometry_msgs/PoseStamped[] plan

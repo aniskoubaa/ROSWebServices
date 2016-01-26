@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package>
+  <name>coros_communication</name>
+  <version>0.0.1</version>
+  <description>The coros_communication package</description>
+  <maintainer email="coros@todo.todo">coros</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>coros_node</build_depend>
+  <build_depend>message_generation</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>coros_node</run_depend>
+  <run_depend>message_runtime</run_depend>
+</package>

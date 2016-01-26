@@ -1,0 +1,28 @@
+﻿<launch>
+    <!--
+
+    This launch file is used to start the Hokuyo laser node with the maximum opening of 280 degrees.
+    The maximum opening is 240 degrees for the URG-04LX.
+
+    Command to launch:
+    roslaunch mybot_bringup hokuyo_bringup_180.launch
+
+    -->
+<!--
+    The hokuyo node with 240 degree
+ -->
+
+  <arg name="port"      	default="/dev/ttyACM0"/>
+  <arg name="min_ang"      	default="-2.086"/>
+  <arg name="max_ang"     	default="2.086"/>
+
+
+     <node name="hokuyo" pkg="hokuyo_node" type="hokuyo_node" respawn="false" output="screen">
+       <param name="calibrate_time" type="bool" value="true"/>
+       <param name="port" type="string" value="$(arg port)"/>
+       <param name="intensity" type="bool" value="false"/>
+       <param name="min_ang" value="$(arg min_ang)"/>
+       <param name="max_ang" value="$(arg max_ang)"/>
+       <param name="cluster" value="1"/>
+     </node>
+</launch>

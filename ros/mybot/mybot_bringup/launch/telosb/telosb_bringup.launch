@@ -1,0 +1,6 @@
+<launch>
+   <node name="telosb_node" pkg="telosb" type="telosb_node" output="screen">
+     <param name="port" value="/dev/telosb"/>
+     <remap from="/telosb_node/telosb_topic" to="/telosb_topic"/> 
+    </node>
+</launch>

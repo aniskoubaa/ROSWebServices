@@ -1,0 +1,42 @@
+<launch>
+  <!-- 
+  
+  This launch file can be reused for several agents by sending the right arguments.
+  
+  Example for control station agent:
+  
+  - coros@coros-dev-pc:~$ roslaunch discovery_app_2 discovery_app_2_agent.launch agent_id:=1 agent_role:=control ip_address:=192.168.100.4
+  
+  Example for robot agent:
+  
+  - coros@coros-dev-pc:~$ roslaunch discovery_app_2 discovery_app_2_agent.launch agent_id:=2 agent_role:=robot ip_address:=192.168.100.5
+  
+  -->
+  
+  <arg name="operator_node_name" default="discovery_operator_app_2_node"/>
+  <arg name="package_name"       default="discovery_app_2"/>
+  
+  
+  <arg name="running_mode"    default="1"/>  <!--  0=simulation or 1=experimental -->
+  <arg name="init_port"       default="25000"/>  <!--  used only in simulation to match agents with each others, should be the same as the port number of the simulation server -->
+  
+  <arg name="agent_id"        default="1"/>
+  <arg name="agent_role"      default="control"/>
+  <arg name="agent_name"      default="mybot"/>
+  <arg name="port_number"     default="1200"/> 
+  <arg name="ip_address"      default="192.168.100.175"/> <!-- will be overriden by the ip address provided by ip_address_service service -->
+
+  <arg name="hello_frequency" default="3"/>
+    
+  <!-- Operator Node -->
+  <node name="$(arg operator_node_name)$(arg agent_id)" pkg="$(arg package_name)" type="$(arg operator_node_name)" args="$(arg operator_node_name)$(arg agent_id) $(arg running_mode) $(arg agent_id)"  >
+    <param name="agent_id"        value="$(arg agent_id)"/>
+    <param name="agent_name"      value="$(arg agent_name)"/>
+    <param name="agent_role"      value="$(arg agent_role)"/>
+    <param name="ip_address"      value="$(arg ip_address)"/>
+    <param name="hello_frequency" value="$(arg hello_frequency)"/>
+    <param name="port_number"     value="$(arg port_number)"/>
+    <param name="init_port"       value="$(arg init_port)"/>
+  </node>
+  
+</launch>

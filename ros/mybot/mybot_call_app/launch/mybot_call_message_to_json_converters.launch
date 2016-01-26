@@ -1,0 +1,19 @@
+<launch>
+  <!-- 
+  
+  This launch file can be reused for several coros messages to json format convertors by sending the right arguments.
+
+  -->
+  
+  <!-- by convention ns equals to message type -->
+ 
+
+  <node
+    pkg  = "coros_message_converter"
+    type = "coros_msg_to_json.py"
+    name = "coros_msg_to_json"
+    ns   = "CallRequestMsg" 
+    args = "'mybot_call_app' 'CallRequestMsg'" output="screen">
+  </node>
+
+</launch>

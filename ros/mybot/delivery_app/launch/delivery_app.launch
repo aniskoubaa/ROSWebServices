@@ -1,0 +1,31 @@
+<launch>
+   
+  <arg name="operator_node_name" default="delivery_operator_app_node"/>
+  <arg name="user_node_name"     default="delivery_user_app_node"/>
+  <arg name="package_name"       default="delivery_app"/>
+  
+  
+  <arg name="running_mode"    default="1"/>  <!--  0=simulation or 1=experimental -->
+  <arg name="agent_id"        default="1"/>
+  <arg name="agent_role"      default="delivery"/>
+  <arg name="port_number"     default="1200"/> 
+  <arg name="ip_address"      default="192.168.1.106"/> 
+
+ 
+  <!-- Operator Node -->
+  <node name="$(arg operator_node_name)$(arg agent_id)" pkg="$(arg package_name)" type="$(arg operator_node_name)" args="$(arg operator_node_name)$(arg agent_id) $(arg running_mode) $(arg agent_id)"  output="screen">
+    <param name="agent_id"        value="$(arg agent_id)"/>
+    <param name="agent_role"      value="$(arg agent_role)"/>
+    <param name="ip_address"      value="$(arg ip_address)"/>
+    <param name="port_number"     value="$(arg port_number)"/>
+  </node>
+  
+ <!-- User Node -->
+  <node name="$(arg user_node_name)$(arg agent_id)" pkg="$(arg package_name)" type="$(arg user_node_name)" args="$(arg user_node_name)$(arg agent_id) $(arg running_mode) $(arg agent_id)"  output="screen">
+    <param name="agent_id"        value="$(arg agent_id)"/>
+    <param name="agent_role"      value="$(arg agent_role)"/>
+    <param name="ip_address"      value="$(arg ip_address)"/>
+    <param name="port_number"     value="$(arg port_number)"/>
+  </node>
+
+</launch>
